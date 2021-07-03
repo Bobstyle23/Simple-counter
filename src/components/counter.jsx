@@ -15,6 +15,12 @@ class Counter extends Component {
             <p>These are the random photos</p>
           </figcaption>
         </figure>
+        <button
+          onClick={this.handleDecrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Decrement
+        </button>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={this.handleIncrement}
@@ -44,8 +50,11 @@ class Counter extends Component {
   }
 
   handleIncrement = () => {
-    const { count } = this.state;
-    this.setState(count + 1);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  handleDecrement = () => {
+    this.setState({ count: this.state.count - 1 });
   };
 }
 
