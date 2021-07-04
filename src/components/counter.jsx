@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import RemoveIcon from "@material-ui/icons/Remove";
+import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 
@@ -15,6 +15,12 @@ class Counter extends Component {
           className="btn btn-secondary btn-sm"
         >
           <AddIcon />
+        </button>
+        <button
+          onClick={() => this.props.onDecrement(this.props.counter)}
+          className="btn btn-secondary btn-sm m-2"
+        >
+          <RemoveIcon />
         </button>
         <button
           onClick={() => this.props.onDelete(this.props.counter.id)}
