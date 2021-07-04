@@ -1,18 +1,22 @@
 import React, { Component } from "react";
+import RemoveIcon from "@material-ui/icons/Remove";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
+
 class Counter extends Component {
   state = {
-    count: this.props.value,
+    count: this.props.counter.value,
   };
 
   render() {
     return (
       <div>
-        <span className="badge bg-info m-1">{this.props.id}</span>
+        <span className="badge bg-info m-2">{this.props.id}</span>
         <button
           onClick={this.handleDecrement}
           className="btn btn-secondary btn-sm"
         >
-          Decrement
+          <RemoveIcon />
         </button>
 
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
@@ -20,7 +24,13 @@ class Counter extends Component {
           onClick={this.handleIncrement}
           className="btn btn-secondary btn-sm"
         >
-          Increment
+          <AddIcon />
+        </button>
+        <button
+          onClick={() => this.props.onDelete(this.props.counter.id)}
+          className="btn btn-danger btn-sm m-2"
+        >
+          <DeleteSweepIcon />
         </button>
       </div>
     );
