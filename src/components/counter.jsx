@@ -1,26 +1,20 @@
 import React, { Component } from "react";
 class Counter extends Component {
   state = {
-    count: 0,
-    image: "https://picsum.photos/400",
-    names: ["MukhammadBobur", "Bakhtiyor", "Mukhtasar", "Maftuna"],
+    count: this.props.value,
   };
 
   render() {
     return (
-      <React.Fragment>
-        <figure>
-          <figcaption>
-            <img src={this.state.image} alt="" />
-            <p>These are the random photos</p>
-          </figcaption>
-        </figure>
+      <div>
+        <span className="badge bg-info m-1">{this.props.id}</span>
         <button
           onClick={this.handleDecrement}
           className="btn btn-secondary btn-sm"
         >
           Decrement
         </button>
+
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={this.handleIncrement}
@@ -28,12 +22,7 @@ class Counter extends Component {
         >
           Increment
         </button>
-        <ul>
-          {this.state.names.map((name) => (
-            <li key={name}>{name}</li>
-          ))}
-        </ul>
-      </React.Fragment>
+      </div>
     );
   }
 
