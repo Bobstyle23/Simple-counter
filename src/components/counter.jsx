@@ -6,28 +6,33 @@ import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 class Counter extends Component {
   render() {
     return (
-      <div>
-        <span className="badge bg-info m-2">{this.props.id}</span>
-
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          <AddIcon />
-        </button>
-        <button
-          onClick={() => this.props.onDecrement(this.props.counter)}
-          className="btn btn-secondary btn-sm m-2"
-        >
-          <RemoveIcon />
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          <DeleteSweepIcon />
-        </button>
+      <div className="container">
+        <div className="row">
+          <div className="col-1">
+            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+          </div>
+          <div className="col">
+            <button
+              onClick={() => this.props.onIncrement(this.props.counter)}
+              className="btn btn-secondary btn-sm"
+            >
+              <AddIcon />
+            </button>
+            <button
+              onClick={() => this.props.onDecrement(this.props.counter)}
+              className="btn btn-secondary btn-sm m-2"
+              disabled={this.props.counter.value === 0 ? "disabled" : ""}
+            >
+              <RemoveIcon />
+            </button>
+            <button
+              onClick={() => this.props.onDelete(this.props.counter.id)}
+              className="btn btn-danger btn-sm m-2"
+            >
+              <DeleteSweepIcon />
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -38,7 +43,7 @@ class Counter extends Component {
   }
 
   getBadgeClasses() {
-    let classes = "badge m-2 bg-";
+    let classes = "badge  bg-";
     classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
